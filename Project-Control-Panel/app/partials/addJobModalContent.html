@@ -1,0 +1,113 @@
+
+    <div class="modal-header">
+      <h3 class="modal-title">Set job properties</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row">
+          <div class="col-md-4">Job name:</div>
+          <div class="col-md-8"><input type="text" ng-model="j_name" placeholder="Job Name" style="z-index:1" /></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Description:</div>
+          <div class="col-md-8"><input type="text" ng-model="j_description" placeholder="Job Description"/></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Duration:</div>
+          <div class="col-md-8"><input type="number" ng-model="j_duration" placeholder="Job Duration"/></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Start date:</div>
+          <div class="col-md-8" style="display:inline-block; min-height:290px;"><uib-datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Depends on:</div>
+          <div class="col-md-8">
+            <ul>
+                <li ng-repeat="item in j_dependsOn">
+                    {{item.name}}
+                </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Enables:</div>
+          <div class="col-md-8">
+            <ul>
+                <li ng-repeat="item in j_enables">
+                    {{item.name}}
+                </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Resources:</div>
+          <div class="col-md-8">
+            <ul>
+              <li ng-repeat="item in j_resources">
+                  {{item.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row" ng-show = "isComposite(job)">
+          <div class="col-md-4">Children:</div>
+          <div class="col-md-8">
+            <ul>
+              <li ng-repeat="item in job.children">
+                  {{item.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-md-10">
+              <label for="multipleSelect"> Add Resource required: </label><br>
+          <select name="multipleSelect" id="multipleSelect" ng-model="data1_multipleSelect" multiple>
+          <option ng-repeat="item in resourcesAvailable" value={{item.entityId}}>{{item.name}}</option>
+      </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">Percent complete:</div>
+          <div class="col-md-8">{{j_percentComplete}}</div>
+        </div>
+
+        <button type="button" class="btn btn-default" ng-show="job && !isComposite(job)" ng-click="makeComposite(job)">Make Composite</button>
+
+        <button type="button" class="btn btn-default" ng-show="isComposite(job)" ng-click="addChild(job)">Add child</button>
+
+		</div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">SAVE</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+      <h3 class="modal-title">Select jobs</h3>
+  </div>
+  <div class="modal-body">
+      <ul>
+          <li ng-repeat="item in items">
+              <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.name }}</a>
+          </li>
+      </ul>
+      Selected: <b>{{ selected.item.name }}</b>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</script>

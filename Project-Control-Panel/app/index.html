@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" ng-app="pcpBlueApp">
+<head>
+  <meta charset="utf-8">
+  <title>PCP Blue</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="partials/css/jsgantt.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"> </script>
+  <script src="js/jsgantt.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="js/entities.js"></script>
+  <script src="js/project.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+  function exportProject()
+  {
+      var projectService = angular.element(document.getElementById('angularRoutedView')).injector().get('ProjectDataSvc');
+      projectService.exportProject();
+  }
+  </script>
+</head>
+<body>
+  
+  <nav class="navbar navbar-inverse" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Project Control Panel</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">File&nbsp;<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ><a href="#createNew">New</a></li>
+              <li><a href="#" onclick="exportProject()">Export</a></li>
+            </ul>
+          </li>
+
+        <li><a href="#dashboard" >Dashboard</a></li>
+        <li><a href="#resources" >Resources</a></li>
+        <li><a href="#tasks" >Tasks</a></li>
+        <li><a href="#jobs" >Jobs</a></li>
+        <li><a href="#graph" >Graph</a></li>
+        <li><a href="#ganttview" >Gantt Chart</a></li>
+        <li><a href="#jobschedule" >Job Schedule/Agenda</a></li>
+      </ul>
+    </div>
+
+    <!--<ul class="nav navbar-nav navbar-right" >
+        <input ng-model="query" placeholder="Search"><span class="glyphicon glyphicon-search"></span>
+      </ul>-->
+
+      <div class="navbar-header nav navbar-nav navbar-right">
+        <a class="navbar-brand" href="#" id="projectName"></a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="col-sm-12" height="1000">
+    <div class="view-container">
+      <div ng-view class="view-frame" id="angularRoutedView"></div>
+      </div>
+  </div>
+
+</body>
+</html>

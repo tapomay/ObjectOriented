@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Task Details</h3>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="row">
+          <div class="col-md-4">Task name:</div>
+          <div class="col-md-8">{{t.name}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Description:</div>
+          <div class="col-md-8">{{t.description}}</div>
+        </div>
+        <div class="row">
+           <div class="col-md-4">Duration:</div>
+            <div class="col-md-8">{{t.durationDays}} days</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Resources required:</div>
+          <div class="col-md-8">
+            <ul>
+              <li ng-repeat="item in resources">
+                  {{item.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="  ok()">OK</button>
+      </div>
+    </div>
+  </script>
+
+  <div class="row">
+    <!-- <div class="col-md-10"> -->
+      <!--Body content-->
+
+
+      <uib-accordion closeOthers="true">
+        
+        <uib-accordion-group heading="{{j.name}}" ng-repeat="j in jobs | filter:query">
+            
+            <div class="row">
+              <div class="col-md-4">Job name:</div>
+              <div class="col-md-8">{{j.name}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">Description:</div>
+              <div class="col-md-8">{{j.getTask().description}}</div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">Percent Complete:</div>
+                <div class="col-md-8">{{j.percentComplete}} %</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">Start Time:</div>
+              <div class="col-md-8">{{j.startTime | date:'fullDate' }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">State:</div>
+              <div class="col-md-8">{{j.state}}</div>
+            </div>
+            <div class="row" ng-show = "isComposite(j)">
+              <div class="col-md-4">Children:</div>
+              <div class="col-md-8">
+                <ul>
+                  <li ng-repeat="item in j.children">
+                      {{item.name}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-4">Task:</div>
+              <div class="col-md-8"><button type="button" class="btn btn-primary" ng-click="openTaskDetails(j)">{{j.getTask().name}}</button></div>
+            </div>
+
+        </uib-accordion-group>
+
+      </uib-accordion>
+
+    <!-- </div> -->
+  </div>
+
+  <div class="row">
+    <ul>
+    FLOWS:
+    <li ng-repeat="f in flows">
+      {{f.getFromJob().name}} => {{f.getToJob().name}}
+    </li>
+    </ul>
+  </div>
+  <center><button type="button" class="btn btn-primary" ng-click="openEditJob()">Add Job</button>  </center>
+</div>

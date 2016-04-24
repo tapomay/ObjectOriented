@@ -1,0 +1,24 @@
+      <div class="modal-header">
+        <h3 class="modal-title">Resources</h3>
+      </div>
+
+    <div class="modal-body">
+      <p>Name : 
+        <input type="text" ng-model="r_name"></p> <br>
+        <p>Cost : <input type="text" ng-model="r_cost"></p> <br>
+		<p>
+		Resource Type : 
+		<select name="singleSelect" ng-model="data_singleSelect">
+			  <option value="">-Select Resource-</option>		
+			  <option value="LABOR">Labor</option>
+			  <option value="EQUIPMENT">Equipment</option>
+			  <option value="MATERIAL">Material</option>			  			  
+			</select>
+		</p> <br>
+    </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+    

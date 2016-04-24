@@ -1,0 +1,40 @@
+<script>
+function createNewProject()
+{
+	var ngScopeBlue = angular.element(document.getElementById('angularRoutedView')).scope();
+	var projectService = angular.element(document.getElementById('angularRoutedView')).injector().get('ProjectDataSvc');
+	var name = ngScopeBlue.projectName;
+	var date = ngScopeBlue.dt;
+	//alert(name+"\n"+date);
+	projectService.createNewProject(name,date);
+	var projectName = projectService.activeProject();
+	document.getElementById('projectName').innerHTML = projectName;
+	$('#myModal').hide();
+	alert("The project "+ projectName + " is ready to use.");
+}
+
+</script>
+
+<div class="modal-dialog">
+	<div id="myModal" class="modal-content" role="dialog">
+		<div class='modal-header'>
+			<h3 class='modal-title'>Create New</h3>
+		</div>
+
+		<div class='modal-body'>
+			<p>Project Name : <input type='text' ng-model='projectName' required="true">*</p> 
+			<br>
+			<p>Start Date : 
+				<div style="display:inline-block; min-height:290px;">
+		  <uib-datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
+		</div>
+			</p>
+		</div>
+		<div class='modal-footer'>
+			<button class='btn btn-primary' type='button' onclick="createNewProject()">Create</button>
+			
+		</div>
+	</div>
+</div>
+
+

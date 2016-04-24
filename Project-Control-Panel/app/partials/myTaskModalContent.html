@@ -1,0 +1,22 @@
+      <div class="modal-header">
+        <h3 class="modal-title">Tasks</h3>
+      </div>
+
+    <div class="modal-body">
+      <p>Name : 
+        <input type="text" ng-model="t_name" placeholder="Task Name"></p> <br>
+        <p>Description : <input type="text" ng-model="t_desc" placeholder="Task Description"></p> <br>
+		
+      <p>Duration : <input type="text" ng-model="t_duration" placeholder="Duration"></p> <br>	
+			
+		<label for="multipleSelect"> Resource required: </label><br>
+		<select name="multipleSelect" id="multipleSelect" ng-model="data1_multipleSelect" multiple>
+			<option ng-repeat="item in resources" value="{{item.name}}">{{item.name}}</option>
+		</select><br>
+		
+    </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>

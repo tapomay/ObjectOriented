@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <!--Body content-->
+
+
+      <div class="panel-group" id="accordion">
+        
+        <div ng-repeat="t in tasks | filter:query" class="panel panel-default">
+            
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="" ng-click="gotoAnchor({{t.entityId}})">{{t.name}}</a>
+            </h4>
+          </div>
+
+          <div id="anchor{{t.entityId}}" class="panel-collapse collapse">
+              <div class="row">
+                <div class="col-md-4">Task name:</div>
+                <div class="col-md-8">{{t.name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Description:</div>
+                <div class="col-md-8">{{t.description}}</div>
+              </div>
+              <div class="row">
+                 <div class="col-md-4">Duration:</div>
+                  <div class="col-md-8">{{t.durationDays}} days</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Labor required:</div>
+                <div class="col-md-8">{{t.laborRequired}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Equipment required:</div>
+                <div class="col-md-8">{{t.equipmentRequired}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Material required:</div>
+                <div class="col-md-8">{{t.materialRequired}}</div>
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+
+  <div class="row">
+    <!-- <div class="col-md-10"> -->
+      <!--Body content-->
+
+
+      <uib-accordion closeOthers="true">
+        
+        <uib-accordion-group heading="{{t.name}}" ng-repeat="t in tasks | filter:query">
+            
+            <div class="row">
+              <div class="col-md-4">Task name:</div>
+              <div class="col-md-8">{{t.name}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">Description:</div>
+              <div class="col-md-8">{{t.description}}</div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">Duration:</div>
+                <div class="col-md-8">{{t.durationDays}} days</div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">Resources required:</div>
+              <div class="col-md-8">{{t.resourcesRequired}}</div>
+            </div>
+
+           
+
+        </uib-accordion-group>
+
+      </uib-accordion>
+
+      <div class="col-md-10">
+      <!--Body content-->
+
+       <center> <button type="button" class="btn btn-primary" ng-click="open2($scope.uibModal)">Add Task</button></center>
+    </div>
+
+    <!-- </div> -->
+  </div>
+  
+</div>
