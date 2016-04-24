@@ -1,0 +1,542 @@
+
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=unicode">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+
+<title>Functional Specification Generator @CS251A - FALL 2015 By Tapomay Dey</title>
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:-9.35pt;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:center;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	tab-stops:209.25pt 364.5pt;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-font-kerning:14.0pt;
+	mso-bidi-font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:-9.35pt;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	tab-stops:209.25pt 364.5pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+h3
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:-9.35pt;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-weight:normal;}
+h4
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
+	mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h5
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
+	mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:12.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:normal;
+	mso-bidi-font-weight:bold;
+	font-style:italic;
+	text-decoration:underline;
+	text-underline:single;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2E74B5;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2E74B5;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#1F4D78;
+	mso-themecolor:accent1;
+	mso-themeshade:127;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2E74B5;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 5";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2E74B5;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+p.Box, li.Box, div.Box
+	{mso-style-name:Box;
+	mso-style-unhide:no;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:center;
+	line-height:150%;
+	mso-pagination:widow-orphan lines-together;
+	tab-stops:45.0pt 63.0pt 81.0pt 99.0pt 117.0pt 135.0pt 153.0pt 171.0pt 189.0pt 207.0pt 225.0pt 243.0pt 261.0pt 279.0pt 297.0pt 315.0pt;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-no-proof:yes;}
+span.CodeChar, div.CodeChar
+	{mso-style-name:"Code Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Code;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:AR-SA;
+	mso-no-proof:yes;}
+p.Code, li.Code, div.Code
+	{mso-style-name:Code;
+	mso-style-unhide:no;
+	mso-style-link:"Code Char";
+	margin-top:6.0pt;
+	margin-right:-9.35pt;
+	margin-bottom:6.0pt;
+	margin-left:.4in;
+	mso-pagination:widow-orphan lines-together;
+	tab-stops:45.0pt 63.0pt 81.0pt 99.0pt 117.0pt 135.0pt 153.0pt 171.0pt 189.0pt 207.0pt 225.0pt 243.0pt 261.0pt 279.0pt 297.0pt 315.0pt;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-no-proof:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+.tab { margin-left: 40px; }
+</style>
+
+<!-- 
+CODE STARTS HERE
+<script src="funcspec_models.js"></script>
+<script src="tools_mod.js"></script>
+<script src="Parser.js"></script>
+
+ALL ABOVE SCRIPTS HAVE BEEN BUNDLED INTO bundle.js
+The individual scripts are more readable. Please refer them instead.
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+<script src="bundle.js"></script>
+
+<script>
+    
+    function bootstrap(jsonText) {
+	//Using module parser from Parser.js (Bundled into bundle.js)
+        var jsonObject = parser.parseMdjText(jsonText);
+    	parser.mainHandler(jsonObject);
+    }
+    
+    function handleFileSelect(evt) {
+	        var files = evt.target.files; // FileList object
+	
+	        var f = files[0];
+	
+	        // Only process mdj files.
+	        /*alert(f.type);
+	        if (!f.type.match('mdj.*')) {
+	          alert("Invalid file type: Only MDJ supported.");
+	        }*/
+	
+	        var reader = new FileReader();
+	
+		// If we use onloadend, we need to check the readyState.
+		reader.onloadend = function(evt) {
+			if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+				bootstrap(evt.target.result);
+		      	}
+		};
+
+	        // Read in the file as content.
+		var blob = f.slice();
+	        reader.readAsBinaryString(blob);
+    }
+
+    window.onload = function() {
+    	// Check for the various File API support.
+    	if (window.File && window.FileReader && window.FileList && window.Blob) {
+    	  // Great success! All the File APIs are supported.
+    	} else {
+    	  alert('The File APIs are not fully supported in this browser.');
+    	}
+    	
+    	
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    	
+//        var x=document.getElementById("val:projectName");
+//        alert(x.innerHTML);
+//        x.innerHTML="BINGO";
+    }
+</script>
+
+<script id="actorTemplate" type="text/x-jquery-tmpl">
+	<p class="tab"><u><b>${actor}</b></u>: ${doc}</p>
+</script>
+
+<script id="usecaseTemplate" type="text/x-jquery-tmpl">
+	<b style='mso-bidi-font-weight:normal'>UseCase: </b> <i style='mso-bidi-font-style:normal'>${name}</i>
+	<ul>
+		<li><b style='mso-bidi-font-weight:normal'>Actors: </b> 
+			<ul>{{each actors}}<li>${name}</li>{{/each}}</ul>
+		</li>
+		<li><b style='mso-bidi-font-weight:normal'>Description: </b> <i style='mso-bidi-font-style:normal'>${description}</i></li>
+		<li><b style='mso-bidi-font-weight:normal'>Priority: </b> <i style='mso-bidi-font-style:normal'>${priority}</i></li>
+		<li><b style='mso-bidi-font-weight:normal'>Risk: </b> <i style='mso-bidi-font-style:normal'>${risk}</i></li>
+		<li><b style='mso-bidi-font-weight:normal'>Included Usecases: </b>
+			<ul>{{each includes}}<li>${name}</li>{{/each}}</ul>
+		</li>
+		<li><b style='mso-bidi-font-weight:normal'>Scenarios: </b>
+		<br/><span style='mso-tab-count:1'>Main Scenario:</span><br/>
+			<table name="Scenario Table" id="scenario" style='mso-tab-count:1'>
+				{{each scenario}}
+				<tr>
+				    <td>${actor}</td> <td>:</td> <td>${action}</td>
+				</tr>
+				{{/each}}
+			</table>
+		</li>
+	</ul>
+</script>
+
+<script id="diagramTemplate" type="text/x-jquery-tmpl">
+	<p><b style='mso-bidi-font-weight:normal'>${name}</b></p>
+	<p class="tab"><img src="${path}"></p>
+</script>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<h1><span style='mso-fareast-font-family:"Times New Roman"'>Functional
+        Specification for <i style='mso-bidi-font-style:normal'><span id="val:model:projectName" class="CodeChar">Project Name</span></i><o:p></o:p></span></h1>
+
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<p class=MsoNormal>
+    <b style='mso-bidi-font-weight:normal'>Client</b>: <span id="val:model:client" class="CodeChar">Client Name</span><br>
+    <b style='mso-bidi-font-weight:normal'>Developer</b>: <span id="val:model:dev" class="CodeChar">Tapomay Dey</span><br>
+    <b style='mso-bidi-font-weight:normal'>Author</b>: <span id="val:model:author" class="CodeChar">Author Name</span>
+</p>
+
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Introduction<o:p></o:p></span></h2>
+<p class=MsoNormal><span id="val:model:documentation" class="CodeChar">The introduction should give an overview of the system for
+which this functional specification is being written. This summary may include as little or as much
+detail as necessary, but should describe the purpose, scope, and objectives of
+the system while also providing background and history if appropriate.</span></p>
+
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Business Context<o:p></o:p></span></h2>
+<p class=MsoNormal>This section includes a glossary of domain-specific terms:</p>
+<span id="business_context" class="CodeChar">
+
+</span>
+
+
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Diagrams:<o:p></o:p></span></h2>
+
+<div id="diagrams" align=center>
+
+</div>
+
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Functional
+Requirements<o:p></o:p></span></h2>
+<span id="functional_requirements" class="CodeChar">
+<p class=MsoNormal>This section includes the use case diagrams and use case
+elaborations.</p>
+</span>
+
+<h2><span style='mso-fareast-font-family:"Times New Roman"'>Revision History<o:p></o:p></span></h2>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=444
+ style='width:222.0pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:12.75pt'>
+  <td width=160 nowrap valign=bottom style='width:80.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><b><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Revision<o:p></o:p></span></b></p>
+  </td>
+  <td width=152 nowrap valign=bottom style='width:76.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><b><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Revised by<o:p></o:p></span></b></p>
+  </td>
+  <td width=132 nowrap valign=bottom style='width:66.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><b><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Date<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:12.75pt'>
+  <td width=160 nowrap valign=bottom style='width:80.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span id = "val:model:version" style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Version<o:p></o:p></span></p>
+  </td>
+  <td width=152 nowrap valign=bottom style='width:76.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span id = "val:model:changeby" style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Smith<o:p></o:p></span></p>
+  </td>
+  <td width=132 nowrap valign=bottom style='width:66.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span id = "val:model:date" style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Date<o:p></o:p></span></p>
+  </td>
+ </tr>
+ </tr>
+ <tr style='mso-yfti-irow:8;mso-yfti-lastrow:yes;height:12.75pt'>
+  <td width=160 nowrap valign=bottom style='width:80.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=152 nowrap valign=bottom style='width:76.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=132 nowrap valign=bottom style='width:66.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:12.75pt'>
+  <p class=MsoNormal align=center style='margin:0in;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
